@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="yike">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 <body>
 	<div class="viewport">
 		<!-- 侧边导航 -->
-		<div class="navs">
+		<div ng-class="{navs:true,collapse:collapsed}">
 			<dl>
 				<dt class="login">
 					<div class="avatar">
@@ -56,13 +56,13 @@
 		</div>
 		<div class="container">
 			<!-- 头部 -->
-			<div class="header">
-				<a href="javascript:;" class="menu icon-menu"></a>
+			<div ng-class="{header:true,collapse:collapsed}">
+				<a href="javascript:;" class="menu icon-menu" ng-click="toggle();"></a>
 				<h2>今日一刻</h2>
 				<a href="javascript:;" class="search icon-search"></a>
 			</div>
 			<!-- 主体 -->
-			<div class="body">
+			<div ng-class="{body:true,collapse:collapsed}">
 				<div class="item">
 					<!-- 日期分类 -->
 					<div class="mark">13Aug</div>
@@ -156,4 +156,6 @@
 	</div>
 	<!-- <script src="./public/libs/toggle.js"></script> -->
 </body>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
 </html>
