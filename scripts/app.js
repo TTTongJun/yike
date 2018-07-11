@@ -1,5 +1,6 @@
 // 创建app应用模块
-var yike = angular.module("yike",[]);
+// 调用/依赖控制器模块,在依赖中写上控制器的名称
+var yike = angular.module("yike",["Controller","ngRoute"]);
 
 /*
 	run方法在模块创建好之后会直接执行
@@ -37,13 +38,30 @@ yike.run(["$rootScope",function($rootScope){
 				dds[i].style.transitionTimingFunction = 'ease-out';
 				dds[i].style.transform = 'translate(-100%)';
 			}
-			
-
 		}
 	}
 }]);
 
+// 修改路由锚点错误的bug
+yike.config(["$locationProvider",function($locationProvider){
+	$locationProvider.hashPrefix("");
+}]);
 
+// 配置路由
+yike.config(["$routeProvider",function($routeProvider){
+	$routeProvider.when("/",{
+		redirectTo: "/index"//跳转到/index处理
+	}).when("/index",{
+		templateUrl: './views/list.html',
+		controller: "indexCtrl"
+	}).when("/older",{
+		templateUrl: "./views/older.html",
+		controller: "olderCtrl"
+	}).when("/author",{
+		templateUrl: "./views/author.html",
+		controller: "authorCtrl"
+	})
+}]);
 
 
 
